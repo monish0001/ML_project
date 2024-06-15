@@ -1,0 +1,181 @@
+{% extends "layout.html" %} {% block content %}
+<form action="" method="post" class="flight-form">
+  {{ form.hidden_tag() }}
+
+  <fieldset>
+    <legend>Flight Booking Details</legend>
+
+    <div class="form-group">
+      {{ form.airline.label(class="form-label") }} {{
+      form.airline(class="form-control") }} {% if form.airline.errors %} {% for
+      error in form.airline.errors %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.date_of_journey.label(class="form-label") }} {{
+      form.date_of_journey(class="form-control") }} {% if
+      form.date_of_journey.errors %} {% for error in form.date_of_journey.errors
+      %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.source.label(class="form-label") }} {{
+      form.source(class="form-control") }} {% if form.source.errors %} {% for
+      error in form.source.errors %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.destination.label(class="form-label") }} {{
+      form.destination(class="form-control") }} {% if form.destination.errors %}
+      {% for error in form.destination.errors %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.dep_time.label(class="form-label") }} {{
+      form.dep_time(class="form-control") }} {% if form.dep_time.errors %} {%
+      for error in form.dep_time.errors %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.arrival_time.label(class="form-label") }} {{
+      form.arrival_time(class="form-control") }} {% if form.arrival_time.errors
+      %} {% for error in form.arrival_time.errors %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.duration.label(class="form-label") }} {{
+      form.duration(class="form-control") }} {% if form.duration.errors %} {%
+      for error in form.duration.errors %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.total_stops.label(class="form-label") }} {{
+      form.total_stops(class="form-control") }} {% if form.total_stops.errors %}
+      {% for error in form.total_stops.errors %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.additional_info.label(class="form-label") }} {{
+      form.additional_info(class="form-control") }} {% if
+      form.additional_info.errors %} {% for error in form.additional_info.errors
+      %}
+      <div class="error">{{ error }}</div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="form-group">{{ form.submit(class="btn btn-primary") }}</div>
+
+    <div class="output">
+      <p class="prediction-msg">
+        <span class="predicted-price">{{output}}</span>
+      </p>
+    </div>
+
+    <div>
+      <p>Redirect to Homepage? <a href="{{ url_for('home') }}">Home</a></p>
+    </div>
+  </fieldset>
+</form>
+
+<style>
+  .flight-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-label {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  .error {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .output {
+    margin-top: 20px;
+  }
+
+  .prediction-msg {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff; /* Blue text for prediction message */
+  }
+
+  .predicted-price {
+    color: #28a745; /* Green color for the predicted price */
+  }
+</style>
+
+{% endblock content %}
